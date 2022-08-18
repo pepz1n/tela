@@ -27,24 +27,38 @@
     <v-app-bar
       :clipped-left="clipped"
       fixed
-      color="#073b5b"
+      color="white"
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title   style="color:white; background-size: 100%;"><img src="../components/índice(1)(1).svg" alt=""></v-toolbar-title>
       <v-spacer />
       <v-menu
         offset-y
       >
         <template v-slot:activator="on, attrs">
           <v-btn
-            color="#073b5b"
+            color="white"
             height="100%"
             v-bind="on"
             v-on="attrs"
             elevation="0"
+            fab
+          >
+          <v-badge
+            v-if="badge"
+            dot
+            color="red"
+            overlap
           >
             <v-icon
+              color="#073b5b"
+            >
+              mdi-bell
+            </v-icon>
+          </v-badge>
+          <v-icon 
+              v-if="!badge"
               color="white"
             >
               mdi-bell
@@ -66,10 +80,11 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-btn
-            color="#073b5b"
+            color="white"
             height="100%"
             v-bind="attrs"
             v-on="on"
+            outlined
             elevation="0"
           >
           <v-row>
@@ -84,7 +99,7 @@
               </v-avatar>
             </v-col>
             <v-col>
-              <p style="color:white; margin-top: 10%;">
+              <p style="color:#073b5b; margin-top: 10%;">
                   Bernardo
               </p>
             </v-col>
@@ -139,6 +154,7 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
+      badge:true,
       clipped: false,
       drawer: false,
       fixed: false,
